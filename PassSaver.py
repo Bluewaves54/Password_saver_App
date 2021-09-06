@@ -54,7 +54,7 @@ def init():
     (
     name text,
     code text
-    )""")  # This creates a users table if it doesn't exist already.
+    )""")
 
     query = """CREATE TABLE IF NOT EXISTS users_joins
     (user_id integer references users,
@@ -80,7 +80,7 @@ def createacc():
             return
         got_a_unique_code = False
         while not got_a_unique_code:
-            code = code_generator()  # Generates unique code for him as long as the code is not already in "users" table
+            code = code_generator()
             curs.execute("SELECT * FROM users WHERE code = :code", {'code': code})
             result = curs.fetchall()
 
